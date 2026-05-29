@@ -1,43 +1,56 @@
-# Astro Starter Kit: Minimal
+# M Grishma - Personal Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A sleek, responsive, and modern personal portfolio website built with **Astro**, **Tailwind CSS**, and **TypeScript**, showcasing ML infrastructure and AI systems engineering experience.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tech Stack
 
-## 🚀 Project Structure
+- **Framework**: [Astro v5](https://astro.build/) (Static Site Generator)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (using `@tailwindcss/vite` compiler integration)
+- **Language**: TypeScript
+- **Icons**: Inline SVG Icons (for maximum performance and loading speeds)
+- **Hosting**: GitHub Pages via GitHub Actions
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Project Structure
 
 ```text
 /
+├── .github/workflows/
+│   └── deploy.yml         # GitHub Actions CI/CD deployment configuration
 ├── public/
+│   ├── favicon.svg        # Site favicon
+│   └── grishma_resume.pdf # Downloadable resume PDF
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/        # Reusable presentation components
+│   │   ├── ExperienceItem.astro
+│   │   └── ProjectCard.astro
+│   ├── layouts/
+│   │   └── Layout.astro   # Responsive site shell with theme persistence
+│   ├── pages/
+│   │   └── index.astro    # Portfolio sections (Hero, About, Experience, Projects, Skills)
+│   └── styles/
+│       └── global.css     # Global styles and Tailwind custom theme tokens
+├── astro.config.mjs       # Astro configuration
+├── package.json
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 Local Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+All commands are run from the root directory:
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Installs project dependencies |
+| `npm run dev` | Starts local development server at `http://localhost:4321` |
+| `npm run build` | Builds the static website to `./dist/` |
+| `npm run preview` | Previews the production build locally |
 
-## 🧞 Commands
+## 🚀 Deployment
 
-All commands are run from the root of the project, from a terminal:
+The site is configured to automatically deploy to **GitHub Pages** on every push to the `main` branch. 
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+To enable this:
+1. Ensure the repo is hosted on GitHub (e.g. `github.com/grishmaaa/portfolio`).
+2. Go to **Settings** > **Pages** in your GitHub repository.
+3. Under **Build and deployment** > **Source**, select **GitHub Actions**.
+4. Push any changes to the `main` branch to trigger the deploy workflow.
