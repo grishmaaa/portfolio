@@ -1,74 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600&display=swap');
 
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-  --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-sans: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', monospace;
   
-  /* Modern premium dark/light color tokens */
-  --color-bg-dark: #0a0f1d;
-  --color-bg-card-dark: #121a2e;
-  --color-bg-light: #f8fafc;
-  --color-bg-card-light: #ffffff;
+  --color-bg-brand: #0A0E17;
+  --color-accent-teal: #00C9A7;
   
-  --color-accent-teal: #14b8a6;
-  --color-accent-cyan: #06b6d4;
-  --color-accent-blue: #3b82f6;
-  --color-accent-purple: #a855f7;
-  
-  /* Transitions */
-  --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Strict Typography Constraints */
+  --font-size-display: clamp(3rem, 8vw, 4.5rem); /* 48px - 72px */
+  --font-size-heading: clamp(1.5rem, 4vw, 2rem);  /* 24px - 32px */
+  --font-size-body: 1rem;                         /* 16px */
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #0A0E17;
+    color: #F8FAFC;
     -webkit-font-smoothing: antialiased;
   }
   
   body {
-    @apply font-sans transition-colors duration-300;
+    background-color: #0A0E17;
+    color: #94A3B8; /* Slate-400 for standard muted readability */
   }
-  
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-slate-950/20;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700/50 rounded-full hover:bg-slate-600/50 transition-colors;
+
+  /* Force monospace for code, inline terms, and headers designated as tech terms */
+  code, pre, .tech-mono {
+    font-family: var(--font-mono);
   }
 }
 
-/* Glassmorphism utility classes */
-.glass-dark {
-  background: rgba(18, 26, 46, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+/* Fast Scroll Fade-In Styles */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-light {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Timeline vertical line */
-.timeline-line {
-  background: linear-gradient(to bottom, var(--color-accent-teal), var(--color-accent-cyan), transparent);
-}
-
-/* Neon glow hover effects */
-.glow-hover {
-  transition: all 0.3s ease;
-}
-.glow-hover:hover {
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
-  border-color: rgba(6, 182, 212, 0.4);
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
